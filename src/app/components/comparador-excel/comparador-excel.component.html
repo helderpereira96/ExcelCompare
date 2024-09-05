@@ -3,56 +3,56 @@
 </div>
 
 <div class="principal">
-    <div class="conteudo">
+    <div class="campos">
+        <div class="conteudo">
 
-        <form [formGroup]="arquivosForm" #formRef="ngForm" id="form">
             <div class="container">
-                <div class="container-arquivo">
-                    <label for="formFile" class="form-label">Arquivo 1</label>
-                    <input class="form-control" type="file" id="arquivo1" (change)="changeFile($event, 1)"
-                        accept=".xlsx, .xls" formControlName="arquivo1">
-                    <!-- <pre>{{ arquivo1 | json }}</pre> -->
-                </div>
-                <div class="container-arquivo">
-                    <label for="formFile" class="form-label">Arquivo 2</label>
-                    <input class="form-control" type="file" id="arquivo2" (change)="changeFile($event, 2)"
-                        accept=".xlsx, .xls" formControlName="arquivo2">
-                    <!-- <pre>{{ arquivo2| json }}</pre> -->
-                </div>
+                <form [formGroup]="arquivosForm" #formRef="ngForm" id="form">
+                    <div class="container-arquivo">
+                        <label for="formFile" class="form-label">Arquivo 1</label>
+                        <input class="form-control" type="file" id="arquivo1" (change)="changeFile($event, 1)"
+                            accept=".xlsx, .xls" formControlName="arquivo1">
+                    </div>
+                    <div class="container-arquivo">
+                        <label for="formFile" class="form-label">Arquivo 2</label>
+                        <input class="form-control" type="file" id="arquivo2" (change)="changeFile($event, 2)"
+                            accept=".xlsx, .xls" formControlName="arquivo2">
+                        <!-- <pre>{{ arquivo2| json }}</pre> -->
+                    </div>
+                </form>
             </div>
-        </form>
 
-        <div class="container">
-            <div class="container-busca">
-                <label for="formFile" class="form-label">Comparar arquivos pela coluna definida abaixo. Gerar
-                    arquivo onde itens do arquivo 1 não existem no arquivo 2.</label>
+            <div class="container">
+                <div class="container-busca">
+                    <label for="formFile" class="form-label">Comparar arquivos pela coluna definida abaixo. Gerar
+                        arquivo onde itens do arquivo 1 não existem no arquivo 2.</label>
 
-                <div class="comparador">
-                    <input class="form-control" placeholder="Coluna para comparação" [formControl]="colunaCompararNome">
-                    <button type="button" class="btn btn-primary" (click)="gerarExcel()"
-                        [disabled]="!this.arquivosForm.valid">
-                        Comparar
-                    </button>
+                    <div class="comparador">
+                        <input class="form-control" placeholder="Coluna para comparação"
+                            [formControl]="colunaCompararNome">
+                        <button type="button" class="btn btn-primary" (click)="gerarExcel()"
+                            [disabled]="!this.arquivosForm.valid">
+                            Comparar
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <hr>
-            <div class="container-busca">
-                <label for="formFile" class="form-label">Comparar arquivo com parâmetros. A coluna definida abaixo
-                    deverá ser igual nos dois. Gerar arquivo onde a coluna é divergente.</label>
+                <hr>
+                <div class="container-busca">
+                    <label for="formFile" class="form-label">Comparar arquivo com parâmetros. A coluna definida abaixo
+                        deverá ser igual nos dois. Gerar arquivo onde a coluna é divergente.</label>
 
-                <div class="comparador">
-                    <input class="form-control" placeholder="Coluna do resultado" [formControl]="colunaParametro">
-                    <button type="button" class="btn btn-primary" (click)="comparaListaParametro()"
-                        [disabled]="!this.arquivosForm.valid">Comparar</button>
+                    <div class="comparador">
+                        <input class="form-control" placeholder="Coluna do resultado" [formControl]="colunaParametro">
+                        <button type="button" class="btn btn-primary" (click)="comparaListaParametro()"
+                            [disabled]="!this.arquivosForm.valid">Comparar</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="progress-bar">
-    <div>
-        <ngb-progressbar class="mb-3" type="success" [value]="porcentagem" />
+    <div class="progress-bar">
+        <div class="container-bar">
+            <ngb-progressbar type="success" [value]="porcentagem" />
+        </div>
     </div>
 </div>
-
-{{ porcentagem }}
